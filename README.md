@@ -1,83 +1,83 @@
-# Ex03-Univariate-Analysis
+## Ex03-Univariate-Analysis
 
+# AIM:
+To perform Univariate EDA on the given data set
 
-# Aim
-To read the given data and perform the univariate analysis with different types of plots.
- 
-# Explanation
-Univariate analysis is basically the simplest form to analyze data. Uni means one and this means that the data has only one kind of variable. The major reason for univariate analysis is to use the data to describe. The analysis will take data, summarise it, and then find some pattern in the data.
-    
-# Algorithm
+# Explanation:
+Exploratory data analysis is used to understand the messages within a dataset. This technique involves many iterative processes to ensure that the cleaned data is further sorted to better understand the useful meaning.The primary aim with exploratory analysis is to examine the data for distribution, outliers and anomalies to direct specific testing of your hypothesis
 
-## Step1
-Read the given data.
-    
-## Step2
-Get the information about the data.
-    
-## Step3
-Remove the null values from the data.
+## ALGORITHM:
+# STEP 1:
+Import the built libraries required to perform EDA and outlier removal.
 
-## Step4
-Mention the datatypes from the data.
-    
-## Step5
-Count the values from the data.
-    
-## Step6
-Do plots like boxplots,countplot,distribution plot,histogram plot.
-    
-# Program
-~~~
-import numpy as np
+# STEP 2:
+Read the given csv file
+
+# STEP 3:
+Convert the file into a dataframe and get information of the data.
+
+# STEP 4:
+Return the objects containing counts of unique values using (value_counts()).
+
+# STEP 5:
+Plot the counts in the form of Histogram or Bar Graph.
+
+# STEP 6:
+Use seaborn the bar graph comparison of data can be viewed.
+
+# STEP 7:
+Save the final data set into the file.
+
+## Program:
+```python
 import pandas as pd
-import matplotlib.pyplot as plt
 import seaborn as sns
-df=pd.read_csv("/content/SuperStore.csv")
+df=pd.read_csv("SuperStore.csv")
 df
+
 df.info()
-df.isnull().sum()
-df['Postal Code']=d['Postal Code'].fillna(d['Postal Code'].mode()[0])
-df.head()
-df.boxplot()
-df['Ship Mode'].value_counts()
-df['Segment'].value_counts()
-df['City'].value_counts()
-df['State'].value_counts()
-df['Region'].value_counts()
-df['Category'].value_counts()
-df['Sub-Category'].value_counts()
-df_count = df.groupby(by=["Category"]).count()
-df_sum = df.groupby(by=["Category"]).sum()
-labels=[]
-for i in df_count.index:
-    labels.append(i)
-plt.figure(figsize=(8,8))
-colors = sns.color_palette('pastel')
-myexplode = [0, 0.2,0]
-plt.pie(df_count["Sales"], colors = colors,explode = myexplode, labels=labels, autopct = "%0.0f%%",shadow = True) 
-plt.show()
-~~~
 
+df.dtypes
+df['Row ID'].value_counts()
+df.describe()
 
-# Output
-## Dataset
-![image](https://user-images.githubusercontent.com/66360846/192726294-c1bf9a74-1488-4a69-b5a8-c5da9329a5ad.png)
+sns.boxplot(x='Postal Code',data=df)
 
-## DATA INFO
-![image](https://user-images.githubusercontent.com/66360846/192726553-ce33a743-a581-4f9e-8113-34e18da8bd17.png)
+sns.countplot(x='Sales',data=df)
 
-## DATA NULL
-![image](https://user-images.githubusercontent.com/66360846/192726747-06c99d67-47fc-4368-bf70-efc464339429.png)
+sns.displot(df['Sales'])
 
-## APPLYING MODE TO CLEAN THE DATA
-![image](https://user-images.githubusercontent.com/66360846/192726987-e727db60-a092-447a-85e1-19dc63a83688.png)
+sns.histplot(x='Postal Code',data=df)
+```
+## OUTPUT:
+# DATA:
+![](DATA3-1.png)
 
-## BOX-PLOT
-![image](https://user-images.githubusercontent.com/66360846/192727446-fd91f78a-080b-4419-a55c-5464e6fbe494.png)
- 
-## UNIVARIATE - CATEGORY
-![image](https://user-images.githubusercontent.com/66360846/192727597-42c9df90-38d7-45ee-be32-8945f71b3731.png)
+# INFO:
+![](DATA3-2.png)
 
-# Result
+# DTYPES:
+![](DATA3-3.png)
+
+# VALUE_COUNT:
+![](DATA3-4.png)
+
+# DESCRIBE:
+![](DATA3-5.png)
+
+# BOXPLOT:
+![](DATA3-6.png)
+
+# COUNTPLOT:
+![](DATA3-7.png)
+
+# DISTRIBUTION PLOT:
+![](DATA3-8.png)
+
+# HISTOGRAM PLOT:
+![](DATA3-9.png)
+
+## RESULT:
 Thus we have read the given data and performed the univariate analysis with different types of plots.
+
+
